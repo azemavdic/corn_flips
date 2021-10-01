@@ -4,13 +4,13 @@ import styles from '../css/Sidebar.module.css';
 const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
-            <ul>
+            {/* <ul>
                 <li>
                     <Link href='/'>
                         <a href='#'>Izvozi</a>
                     </Link>
                 </li>
-            </ul>
+            </ul> */}
         </div>
     );
 };

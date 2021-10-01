@@ -2,19 +2,21 @@ import { useState } from 'react';
 import dbConnect from '../lib/dbConnect';
 import { useRouter } from 'next/router';
 import styles from '../css/Form.module.css';
+import IzvozModel from '../models/Izvoz';
 
-const DodajIzvoz = () => {
-    const [naziv, setNaziv] = useState('');
-    const [narudzba, setNarudzba] = useState('');
-    const [isporuka, setIsporuka] = useState('');
-    const [zavrsen, setZavrsen] = useState(false);
+const IzvozPage = ({ izvoz }) => {
+    const [naziv, setNaziv] = useState(izvoz.naziv);
+    const [narudzba, setNarudzba] = useState(izvoz.narudzba);
+    const [isporuka, setIsporuka] = useState(izvoz.isporuka);
+    const [zavrsen, setZavrsen] = useState(izvoz.zavrsen);
 
     const router = useRouter();
+    const id = router.query.id;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch('/api/izvozi', {
-            method: 'POST',
+        const res = await fetch(`/api/izvozi/${id}`, {
+            method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -68,16 +70,29 @@ const DodajIzvoz = () => {
                             onChange={() => setZavrsen(!zavrsen)}
                         />
                     </div>
-                    <input type='submit' value='Dodaj' />
+                    <input type='submit' value='Ispravi' />
                 </form>
             </div>
         </>
     );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
     await dbConnect();
-    return { props: {} };
+    const id = params.id;
+    const izvoz = await IzvozModel.findById(id).lean();
+    izvoz._id = izvoz._id.toString();
+    return { props: { izvoz } };
 }
 
-export default DodajIzvoz;
+export async function getStaticPaths() {
+    await dbConnect();
+    const izvozi = await IzvozModel.find().lean();
+    const paths = izvozi.map((izvoz) => ({
+        params: { id: izvoz._id.toString() },
+    }));
+
+    return { paths, fallback: 'blocking' };
+}
+
+export default IzvozPage;

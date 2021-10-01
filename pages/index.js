@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import dbConnect from '../lib/dbConnect';
 import IzvozModel from '../models/Izvoz';
 import dayjs from 'dayjs';
@@ -5,9 +6,8 @@ import styles from '../css/Home.module.css';
 import Izvoz from '../components/Izvoz';
 
 const Index = ({ izvozi }) => {
-    const formatedDate = izvozi.forEach((izvoz) =>
-        dayjs(izvoz.narudzba).format('DD/MM/YYYY')
-    );
+    const [isLoading, setIsLoading] = useState(true);
+
     let index = 1;
     return (
         <>
