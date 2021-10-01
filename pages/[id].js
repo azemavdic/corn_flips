@@ -77,22 +77,22 @@ const IzvozPage = ({ izvoz }) => {
     );
 };
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ query }) {
     await dbConnect();
-    const id = params.id;
+    const id = query.id;
     const izvoz = await IzvozModel.findById(id).lean();
     izvoz._id = izvoz._id.toString();
     return { props: { izvoz } };
 }
 
-export async function getStaticPaths() {
-    await dbConnect();
-    const izvozi = await IzvozModel.find().lean();
-    const paths = izvozi.map((izvoz) => ({
-        params: { id: izvoz._id.toString() },
-    }));
+// export async function getStaticPaths() {
+//     await dbConnect();
+//     const izvozi = await IzvozModel.find().lean();
+//     const paths = izvozi.map((izvoz) => ({
+//         params: { id: izvoz._id.toString() },
+//     }));
 
-    return { paths, fallback: 'blocking' };
-}
+//     return { paths, fallback: 'blocking' };
+// }
 
 export default IzvozPage;
