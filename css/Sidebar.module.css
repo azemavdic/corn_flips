@@ -1,0 +1,18 @@
+.sidebar {
+    background-color: rgb(179, 56, 56);
+    min-height: calc(89vh);
+    width: 15vw;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    margin-left: 20px;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+    color: #fff;
+}

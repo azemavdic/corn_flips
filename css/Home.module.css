@@ -1,0 +1,26 @@
+.table {
+    margin-top: 40px;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 40px auto;
+}
+
+.table th,
+.table td {
+    border: 1px solid rgb(141, 141, 141);
+    padding: 20px 20px;
+}
+
+.table th {
+    background-color: #ddd;
+}
+
+.table th:hover {
+    background-color: rgb(102, 100, 100);
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+}

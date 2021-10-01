@@ -1,0 +1,28 @@
+.form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.form form div {
+    margin-top: 20px;
+}
+
+.form form div input[type='text'],
+.form form div input[type='date'],
+.form form input[type='submit'] {
+    display: block;
+    width: 50vw;
+    display: block;
+    height: 5vh;
+}
+
+.form form div input[type='checkbox'] {
+    margin-left: 10px;
+}
+
+.form form input[type='submit'] {
+    margin-top: 20px;
+}
