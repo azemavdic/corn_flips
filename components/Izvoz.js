@@ -24,7 +24,7 @@ const Izvoz = ({ izvoz, index }) => {
       <span>
         (
         {danaDoIzvoza === 1
-          ? "1 dan do izvoza"
+          ? "Sutra je izvoz"
           : `${danaDoIzvoza} dana do izvoza`}{" "}
         )
       </span>
