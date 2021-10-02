@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 50vh;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .form form div {
@@ -21,6 +21,12 @@
   border-radius: 10px;
   border: none;
   outline: none;
+}
+
+.form form div input[type="text"],
+.form form div input[type="date"] {
+  padding: 5px;
+  margin-top: 5px;
 }
 
 .form form div input[type="checkbox"] {

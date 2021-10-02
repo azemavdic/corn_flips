@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styles from "../../css/Form.module.css";
 import IzvozModel from "../../models/Izvoz";
 
-const IzvozPage = ({ izvoz }) => {
+const IzvozPageEdit = ({ izvoz }) => {
   const [naziv, setNaziv] = useState(izvoz.naziv);
   const [narudzba, setNarudzba] = useState(izvoz.narudzba);
   const [isporuka, setIsporuka] = useState(izvoz.isporuka);
@@ -105,4 +105,4 @@ export async function getServerSideProps({ query }) {
 //     return { paths, fallback: 'blocking' };
 // }
 
-export default IzvozPage;
+export default IzvozPageEdit;

@@ -14,7 +14,11 @@ const Izvoz = ({ izvoz, index }) => {
   return (
     <tr key={izvoz._id}>
       <td>{index}</td>
-      <td>{izvoz.naziv}</td>
+      <td>
+        <Link href={`/${izvoz._id}`}>
+          <a style={{ color: "#333", fontWeight: "600" }}>{izvoz.naziv}</a>
+        </Link>
+      </td>
       <td>{narudzbaFormatted}</td>
       <td style={{ textAlign: "center" }}>
         {izvoz.proizvodnja ? (

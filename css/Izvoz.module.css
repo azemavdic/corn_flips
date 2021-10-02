@@ -1,0 +1,15 @@
+.container {
+  margin-top: 30px;
+  font-size: 22px;
+  padding: 10px;
+}
+
+.container p {
+  padding: 6px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
