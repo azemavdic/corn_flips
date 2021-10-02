@@ -25,8 +25,9 @@
 
 .form form div input[type="text"],
 .form form div input[type="date"] {
-  padding: 5px;
+  padding: 10px;
   margin-top: 5px;
+  font-size: 20px;
 }
 
 .form form div input[type="checkbox"] {

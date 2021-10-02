@@ -1,14 +1,19 @@
 import dbConnect from "../lib/dbConnect";
 import IzvozModel from "../models/Izvoz";
-import dayjs from "dayjs";
 import styles from "../css/Home.module.css";
 import Izvoz from "../components/Izvoz";
+import Link from "next/link";
 
 const Index = ({ izvozi }) => {
   let index = 1;
   return (
     <>
-      <h1>Raspored izvoza</h1>
+      <div className={styles.header}>
+        <h1>Raspored izvoza</h1>
+        <Link href='/dodaj'>
+          <a>Novi izvoz</a>
+        </Link>
+      </div>
       <div>
         <table className={styles.table}>
           <thead>

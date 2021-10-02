@@ -10,6 +10,10 @@ import {
 const Izvoz = ({ izvoz, index }) => {
   const narudzbaFormatted = dayjs(izvoz.narudzba).format("DD.MM.YYYY");
   const isporukaFormatted = dayjs(izvoz.isporuka).format("DD.MM.YYYY");
+  const sadasnjiDatum = dayjs(Date.now());
+
+  const danaDoIzvoza =
+    Number(dayjs(izvoz.isporuka).diff(sadasnjiDatum, "day")) + 1;
 
   return (
     <tr key={izvoz._id}>
@@ -22,9 +26,35 @@ const Izvoz = ({ izvoz, index }) => {
       <td>{narudzbaFormatted}</td>
       <td style={{ textAlign: "center" }}>
         {izvoz.proizvodnja ? (
-          <FontAwesomeIcon icon={faCheckCircle} color='green' size='2x' />
+          <div className={styles.doizvoza}>
+            <FontAwesomeIcon icon={faCheckCircle} color='green' size='2x' />
+            {danaDoIzvoza <= 0 ? (
+              ""
+            ) : (
+              <span>
+                (
+                {danaDoIzvoza === 1
+                  ? "1 dan do izvoza"
+                  : `${danaDoIzvoza} dana do izvoza`}{" "}
+                )
+              </span>
+            )}
+          </div>
         ) : (
-          <FontAwesomeIcon icon={faTimesCircle} color='red' size='2x' />
+          <div className={styles.doizvoza}>
+            <FontAwesomeIcon icon={faTimesCircle} color='red' size='2x' />
+            {danaDoIzvoza <= 0 ? (
+              ""
+            ) : (
+              <span>
+                (
+                {danaDoIzvoza === 1
+                  ? "1 dan do izvoza"
+                  : `${danaDoIzvoza} dana do izvoza`}{" "}
+                )
+              </span>
+            )}
+          </div>
         )}
       </td>
       <td>{isporukaFormatted}</td>
