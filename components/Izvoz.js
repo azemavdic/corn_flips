@@ -15,6 +15,19 @@ const Izvoz = ({ izvoz, index }) => {
   const danaDoIzvoza =
     Number(dayjs(izvoz.isporuka).diff(sadasnjiDatum, "day")) + 1;
 
+  const doIzvoza =
+    danaDoIzvoza <= 0 ? (
+      ""
+    ) : (
+      <span>
+        (
+        {danaDoIzvoza === 1
+          ? "1 dan do izvoza"
+          : `${danaDoIzvoza} dana do izvoza`}{" "}
+        )
+      </span>
+    );
+
   return (
     <tr key={izvoz._id}>
       <td>{index}</td>
@@ -28,32 +41,12 @@ const Izvoz = ({ izvoz, index }) => {
         {izvoz.proizvodnja ? (
           <div className={styles.doizvoza}>
             <FontAwesomeIcon icon={faCheckCircle} color='green' size='2x' />
-            {danaDoIzvoza <= 0 ? (
-              ""
-            ) : (
-              <span>
-                (
-                {danaDoIzvoza === 1
-                  ? "1 dan do izvoza"
-                  : `${danaDoIzvoza} dana do izvoza`}{" "}
-                )
-              </span>
-            )}
+            {doIzvoza}
           </div>
         ) : (
           <div className={styles.doizvoza}>
             <FontAwesomeIcon icon={faTimesCircle} color='red' size='2x' />
-            {danaDoIzvoza <= 0 ? (
-              ""
-            ) : (
-              <span>
-                (
-                {danaDoIzvoza === 1
-                  ? "1 dan do izvoza"
-                  : `${danaDoIzvoza} dana do izvoza`}{" "}
-                )
-              </span>
-            )}
+            {doIzvoza}
           </div>
         )}
       </td>
