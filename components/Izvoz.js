@@ -18,6 +18,8 @@ const Izvoz = ({ izvoz, index }) => {
   const doIzvoza =
     danaDoIzvoza <= 0 ? (
       ""
+    ) : isporukaFormatted === sadasnjiDatum.format("DD.MM.YYYY") ? (
+      "Danas je izvoz"
     ) : (
       <span>
         (
