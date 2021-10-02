@@ -39,7 +39,10 @@ export async function getServerSideProps() {
   await dbConnect();
 
   /* find all the data in our database */
-  const result = await IzvozModel.find({});
+  const result = await IzvozModel.find({}).sort({
+    zavrsen: 1,
+    isporuka: 1,
+  });
   const izvozi = result.map((doc) => {
     const izvoz = doc.toObject();
     izvoz._id = izvoz._id.toString();

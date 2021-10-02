@@ -38,7 +38,7 @@ const Izvoz = ({ izvoz, index }) => {
         )}
       </td>
       <td>
-        <Link href={izvoz._id}>
+        <Link href={`/edit/${izvoz._id}`}>
           <a className={styles.button}>Izmjene</a>
         </Link>
       </td>

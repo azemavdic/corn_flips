@@ -1,8 +1,8 @@
 import { useState } from "react";
-import dbConnect from "../lib/dbConnect";
+import dbConnect from "../../lib/dbConnect";
 import { useRouter } from "next/router";
-import styles from "../css/Form.module.css";
-import IzvozModel from "../models/Izvoz";
+import styles from "../../css/Form.module.css";
+import IzvozModel from "../../models/Izvoz";
 
 const IzvozPage = ({ izvoz }) => {
   const [naziv, setNaziv] = useState(izvoz.naziv);
@@ -32,7 +32,7 @@ const IzvozPage = ({ izvoz }) => {
 
   return (
     <>
-      <h1>Dodaj izvoz</h1>
+      <h1>Izmijeni izvoz</h1>
       <div className={styles.form}>
         <form onSubmit={handleSubmit}>
           <div>
