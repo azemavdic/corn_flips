@@ -63,7 +63,7 @@ const IzvozPageEdit = ({ izvoz }) => {
             />
           </div>
           <div className={styles.check}>
-            <label htmlFor='zavrsen'>Završen</label>
+            <label htmlFor='zavrsen'>Izvoz status</label>
             <input
               type='checkbox'
               id='zavrsen'

@@ -60,24 +60,6 @@ const DodajIzvoz = () => {
               onChange={(e) => setIsporuka(e.target.value)}
             />
           </div>
-          <div className={styles.check}>
-            <label htmlFor='zavrsen'>Završen</label>
-            <input
-              type='checkbox'
-              id='zavrsen'
-              checked={zavrsen}
-              onChange={() => setZavrsen(!zavrsen)}
-            />
-          </div>
-          <div className={styles.check}>
-            <label htmlFor='proizvodnja'>Proizvodnja</label>
-            <input
-              type='checkbox'
-              id='proizvodnja'
-              checked={proizvodnja}
-              onChange={() => setProizvodnja(!proizvodnja)}
-            />
-          </div>
           <input type='submit' value='Potvrdi' />
         </form>
       </div>
