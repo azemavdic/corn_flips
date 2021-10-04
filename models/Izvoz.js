@@ -1,11 +1,17 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const IzvozSchema = new mongoose.Schema({
-  naziv: { type: String, required: [true, "Upišite naziv kupca"] },
-  narudzba: { type: String, required: [true, "Upišite datum narudžbe"] },
-  proizvodnja: { type: Boolean },
-  isporuka: { type: String, required: [true, "Upišite datum isporuke"] },
-  zavrsen: { type: Boolean },
-});
+const IzvozSchema = Schema(
+    {
+        naziv: { type: String, required: [true, 'Upišite naziv kupca'] },
+        narudzba: { type: String, required: [true, 'Upišite datum narudžbe'] },
+        proizvodnja: { type: Boolean },
+        isporuka: { type: String, required: [true, 'Upišite datum isporuke'] },
+        zavrsen: { type: Boolean },
+    },
+    {
+        timestamps: true,
+    }
+);
 
-export default mongoose.models.Izvoz || mongoose.model("Izvoz", IzvozSchema);
+export default mongoose.models.Izvoz || mongoose.model('Izvoz', IzvozSchema);
