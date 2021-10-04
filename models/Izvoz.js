@@ -5,7 +5,11 @@ const IzvozSchema = Schema(
     {
         naziv: { type: String, required: [true, 'Upišite naziv kupca'] },
         narudzba: { type: String, required: [true, 'Upišite datum narudžbe'] },
-        proizvodnja: { type: Boolean },
+        proizvodnja: {
+            type: String,
+            possibleValues: ['ne', 'utoku', 'da'],
+            default: 'ne',
+        },
         isporuka: {
             type: String,
             immutable: true,

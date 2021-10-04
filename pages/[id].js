@@ -9,6 +9,7 @@ import {
     faTimesCircle,
     faEdit,
     faTrash,
+    faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../css/Izvoz.module.css';
 
@@ -27,7 +28,7 @@ const IzvozPage = ({ izvoz }) => {
                 console.error(error);
             }
         } else {
-            //////
+            alert('Neuspjelo brisanje');
         }
     };
 
@@ -64,18 +65,26 @@ const IzvozPage = ({ izvoz }) => {
                 <p>Datum isporuke: {isporukaFormatted}</p>
                 <p>
                     Status proizvodnje:{' '}
-                    {izvoz.proizvodnja ? (
+                    {izvoz.proizvodnja === 'da' ? (
                         <FontAwesomeIcon
                             icon={faCheckCircle}
                             color='green'
                             size='1x'
                         />
-                    ) : (
+                    ) : izvoz.proizvodnja === 'ne' ? (
                         <FontAwesomeIcon
                             icon={faTimesCircle}
                             color='red'
                             size='1x'
                         />
+                    ) : izvoz.proizvodnja === 'utoku' ? (
+                        <FontAwesomeIcon
+                            icon={faMinusCircle}
+                            color='orange'
+                            size='1x'
+                        />
+                    ) : (
+                        ''
                     )}
                 </p>
                 <p>

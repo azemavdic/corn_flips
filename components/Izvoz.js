@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCheckCircle,
     faTimesCircle,
+    faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Izvoz = ({ izvoz, index }) => {
@@ -42,7 +43,7 @@ const Izvoz = ({ izvoz, index }) => {
             </td>
             <td>{narudzbaFormatted}</td>
             <td style={{ textAlign: 'center' }}>
-                {izvoz.proizvodnja ? (
+                {izvoz.proizvodnja === 'da' ? (
                     <div className={styles.doizvoza}>
                         <FontAwesomeIcon
                             icon={faCheckCircle}
@@ -50,7 +51,7 @@ const Izvoz = ({ izvoz, index }) => {
                             size='2x'
                         />
                     </div>
-                ) : (
+                ) : izvoz.proizvodnja === 'ne' ? (
                     <div className={styles.doizvoza}>
                         <FontAwesomeIcon
                             icon={faTimesCircle}
@@ -58,6 +59,16 @@ const Izvoz = ({ izvoz, index }) => {
                             size='2x'
                         />
                     </div>
+                ) : izvoz.proizvodnja === 'utoku' ? (
+                    <div className={styles.doizvoza}>
+                        <FontAwesomeIcon
+                            icon={faMinusCircle}
+                            color='orange'
+                            size='2x'
+                        />
+                    </div>
+                ) : (
+                    ''
                 )}
             </td>
             <td>{isporukaFormatted}</td>

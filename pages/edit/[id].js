@@ -16,24 +16,29 @@ const IzvozPageEdit = ({ izvoz }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const izvoz = {
+            naziv,
+            narudzba,
+            isporuka,
+            zavrsen,
+            proizvodnja,
+        };
         const res = await fetch(`/api/izvozi/${id}`, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                naziv,
-                narudzba,
-                isporuka,
-                zavrsen,
-                proizvodnja,
-            }),
+            body: JSON.stringify(izvoz),
         });
 
         const data = await res.json();
 
         router.push('/');
+    };
+
+    const handleChange = (e) => {
+        setProizvodnja(e.target.value);
     };
 
     return (
@@ -68,23 +73,54 @@ const IzvozPageEdit = ({ izvoz }) => {
                             onChange={(e) => setIsporuka(e.target.value)}
                         />
                     </div>
-                    <div className={styles.check}>
-                        <label htmlFor='zavrsen'>Izvoz status</label>
-                        <input
-                            type='checkbox'
-                            id='zavrsen'
-                            checked={zavrsen}
-                            onChange={() => setZavrsen(!zavrsen)}
-                        />
-                    </div>
-                    <div className={styles.check}>
-                        <label htmlFor='proizvodnja'>Proizvodnja status</label>
-                        <input
-                            type='checkbox'
-                            id='proizvodnja'
-                            checked={proizvodnja}
-                            onChange={() => setProizvodnja(!proizvodnja)}
-                        />
+                    <div className={styles.center}>
+                        <div className={styles.check}>
+                            <label htmlFor='zavrsen'>Izvoz status</label>
+                            <input
+                                type='checkbox'
+                                id='zavrsen'
+                                checked={zavrsen}
+                                onChange={() => setZavrsen(!zavrsen)}
+                            />
+                        </div>
+                        <div>
+                            <p>Proizvodnja status:</p>
+                            <div className={styles.radio}>
+                                <label htmlFor='ne'>
+                                    <input
+                                        type='radio'
+                                        id='ne'
+                                        value='ne'
+                                        name='proizvodnja'
+                                        checked={proizvodnja === 'ne'}
+                                        onChange={handleChange}
+                                    />
+                                    Nije počela
+                                </label>
+                                <label htmlFor='utoku'>
+                                    <input
+                                        type='radio'
+                                        id='utoku'
+                                        value='utoku'
+                                        name='proizvodnja'
+                                        checked={proizvodnja === 'utoku'}
+                                        onChange={handleChange}
+                                    />
+                                    U toku
+                                </label>
+                                <label htmlFor='da'>
+                                    <input
+                                        type='radio'
+                                        id='da'
+                                        value='da'
+                                        name='proizvodnja'
+                                        checked={proizvodnja === 'da'}
+                                        onChange={handleChange}
+                                    />
+                                    Završena
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <input type='submit' value='Ispravi' />
                 </form>
