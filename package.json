@@ -9,6 +9,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
+    "bcryptjs": "^2.4.3",
     "dayjs": "^1.10.7",
     "mongoose": "^5.9.13",
     "next": "latest",
