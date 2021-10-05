@@ -1,4 +1,4 @@
-import User from '../../../models/User';
+import UserModel from '../../../models/User';
 import { hashPassword } from '../../../lib/auth';
 
 export default async function (req, res) {
@@ -20,7 +20,7 @@ export default async function (req, res) {
 
         const hashedPassword = await hashPassword(password);
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             res.status(422).json({
                 message: 'Korisnik postoji sa tom email adresom',
@@ -28,7 +28,7 @@ export default async function (req, res) {
             return;
         }
 
-        const user = await User.create({
+        const user = await UserModel.create({
             name,
             email,
             password: hashedPassword,
