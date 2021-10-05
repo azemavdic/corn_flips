@@ -71,7 +71,12 @@ const Izvoz = ({ izvoz, index }) => {
                     ''
                 )}
             </td>
-            <td>{isporukaFormatted}</td>
+            <td>
+                <div className='flex-col'>
+                    {isporukaFormatted}
+                    {doIzvoza}
+                </div>
+            </td>
             <td>
                 {izvoz.zavrsen ? (
                     <div className={styles.doizvoza}>
@@ -80,7 +85,6 @@ const Izvoz = ({ izvoz, index }) => {
                             color='green'
                             size='2x'
                         />
-                        {doIzvoza}
                     </div>
                 ) : (
                     <div className={styles.doizvoza}>
@@ -89,7 +93,6 @@ const Izvoz = ({ izvoz, index }) => {
                             color='red'
                             size='2x'
                         />
-                        {doIzvoza}
                     </div>
                 )}
             </td>
