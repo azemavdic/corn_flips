@@ -5,6 +5,7 @@ import styles from "../../css/Form.module.css";
 import IzvozModel from "../../models/Izvoz";
 import UserModel from "../../models/User";
 import { getSession } from "next-auth/client";
+import { toast } from "react-toastify";
 
 const IzvozPageEdit = ({ izvoz, user }) => {
   const [naziv, setNaziv] = useState(izvoz.naziv);
@@ -34,8 +35,12 @@ const IzvozPageEdit = ({ izvoz, user }) => {
       body: JSON.stringify(izvoz),
     });
 
+    if (!res.ok) {
+      toast.error("Neuspješna promjena podataka");
+      return;
+    }
     const data = await res.json();
-
+    toast.success("Uspješna promjena");
     router.push("/");
   };
 

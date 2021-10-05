@@ -50,6 +50,10 @@
   cursor: pointer;
 }
 
+.form form input[type="submit"]:hover {
+  background-color: rgba(179, 56, 56, 0.657);
+}
+
 .center {
   text-align: center;
 }

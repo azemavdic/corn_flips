@@ -19,6 +19,13 @@ export default async function handler(req, res) {
       break;
     case "POST":
       try {
+        const { naziv, narudzba, isporuka } = req.body;
+        if (!naziv || !narudzba || !isporuka) {
+          res.status(422).json({
+            message: "Molimo popunite sva polja",
+          });
+          return;
+        }
         const izvoz = await Izvoz.create(
           req.body
         ); /* create a new model in the database */

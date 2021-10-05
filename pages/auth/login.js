@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { getSession, signIn } from "next-auth/client";
 import styles from "../../css/Form.module.css";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [disable, setDisable] = useState(false);
 
   const nameRef = useRef();
   const passwordRef = useRef();
@@ -14,7 +16,7 @@ const LoginPage = () => {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
-        router.replace("/");
+        router.push("/");
       } else {
         setIsLoading(false);
       }
@@ -23,6 +25,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisable(true);
     const enteredName = nameRef.current.value;
     const enteredPassword = passwordRef.current.value;
 
@@ -33,7 +36,14 @@ const LoginPage = () => {
     });
 
     if (!result.error) {
+      console.log(result);
+      toast.success("Uspješna prijava");
       router.push("/");
+    } else {
+      console.log(result);
+      toast.error(result.error);
+      setDisable(false);
+      return;
     }
   };
 
@@ -54,7 +64,7 @@ const LoginPage = () => {
             <label htmlFor='password'>Šifra</label>
             <input type='password' id='password' ref={passwordRef} />
           </div>
-          <input type='submit' value='Prijava' />
+          <input type='submit' value='Prijava' disabled={disable} />
         </form>
       </div>
     </div>
