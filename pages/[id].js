@@ -1,6 +1,7 @@
 import dbConnect from '../lib/dbConnect';
 import Link from 'next/link';
 import IzvozModel from '../models/Izvoz';
+import UserModel from '../models/User';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,8 +13,9 @@ import {
     faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../css/Izvoz.module.css';
+import { getSession } from 'next-auth/client';
 
-const IzvozPage = ({ izvoz }) => {
+const IzvozPage = ({ izvoz, user }) => {
     const router = useRouter();
 
     const handleDelete = async (e) => {
@@ -38,26 +40,38 @@ const IzvozPage = ({ izvoz }) => {
     const ispravljenFormatted = dayjs(izvoz.updatedAt).format(
         'DD.MM.YYYY - HH:m'
     );
+
+    const komercijala = user.isKomercijala;
+    const proizvodnja = user.isProizvodnja;
+
     return (
         <div>
             <div className={styles.header}>
                 <h1>{izvoz.naziv}</h1>
                 <div>
                     <Link href={`/edit/${izvoz._id}`}>
-                        <FontAwesomeIcon
-                            icon={faEdit}
-                            style={{ marginRight: '14px', cursor: 'pointer' }}
-                            size='lg'
-                            color='green'
-                        />
+                        <a>
+                            <FontAwesomeIcon
+                                icon={faEdit}
+                                style={{
+                                    marginRight: '14px',
+                                    cursor: 'pointer',
+                                }}
+                                size='lg'
+                                color='green'
+                            />
+                        </a>
                     </Link>
-                    <FontAwesomeIcon
-                        icon={faTrash}
-                        size='lg'
-                        color='red'
-                        style={{ cursor: 'pointer' }}
-                        onClick={handleDelete}
-                    />
+                    {komercijala ||
+                        (!proizvodnja && (
+                            <FontAwesomeIcon
+                                icon={faTrash}
+                                size='lg'
+                                color='red'
+                                style={{ cursor: 'pointer' }}
+                                onClick={handleDelete}
+                            />
+                        ))}
                 </div>
             </div>
             <div className={styles.container}>
@@ -112,10 +126,23 @@ const IzvozPage = ({ izvoz }) => {
 
 export default IzvozPage;
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps(ctx) {
+    const session = await getSession(ctx);
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/auth/login',
+                permanent: false,
+            },
+        };
+    }
     await dbConnect();
-    const id = query.id;
+    const id = ctx.query.id;
     const data = await IzvozModel.findById(id).lean();
+
+    const userData = await UserModel.findOne({ name: session.user.name });
+    const user = JSON.parse(JSON.stringify(userData));
+
     const izvoz = JSON.parse(JSON.stringify(data));
-    return { props: { izvoz } };
+    return { props: { izvoz, session, user } };
 }

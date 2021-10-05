@@ -1,21 +1,21 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema(
-  {
-    username: { type: String },
-    email: { type: String, required: [true, "Upišite email"] },
-    password: {
-      type: String,
-      required: [true, "Upišite šifru"],
+    {
+        name: { type: String },
+        email: { type: String, required: [true, 'Upišite email'] },
+        password: {
+            type: String,
+            required: [true, 'Upišite šifru'],
+        },
+        isProizvodnja: { type: Boolean, default: false },
+        isKomercijala: { type: Boolean, default: false },
+        isAdmin: { type: Boolean, default: false },
     },
-    isProizvodnja: { type: Boolean, default: false },
-    isKomercijala: { type: Boolean, default: false },
-    isAdmin: { type: Boolean, default: false },
-  },
-  {
-    timestamps: true,
-  }
+    {
+        timestamps: true,
+    }
 );
 
-export default mongoose.models.User || mongoose.model("User", UserSchema);
+export default mongoose.models.User || mongoose.model('User', UserSchema);

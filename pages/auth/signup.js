@@ -2,17 +2,17 @@ import { useRef } from "react";
 import styles from "../../css/Form.module.css";
 
 const SignUpPage = () => {
-  const usernameRef = useRef();
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const enteredUsername = usernameRef.current.value;
+    const enteredName = nameRef.current.value;
     const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
     const user = {
-      username: enteredUsername,
+      name: enteredName,
       email: enteredEmail,
       password: enteredPassword,
     };
@@ -37,8 +37,8 @@ const SignUpPage = () => {
       <div className={styles.form}>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='username'>Korisničko ime</label>
-            <input type='text' id='username' ref={usernameRef} />
+            <label htmlFor='name'>Korisničko ime</label>
+            <input type='text' id='name' ref={nameRef} />
           </div>
           <div>
             <label htmlFor='email'>Email</label>

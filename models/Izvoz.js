@@ -12,7 +12,7 @@ const IzvozSchema = Schema(
         },
         isporuka: {
             type: String,
-            immutable: true,
+            // immutable: true,
             required: [true, 'Upišite datum isporuke'],
         },
         zavrsen: { type: Boolean },

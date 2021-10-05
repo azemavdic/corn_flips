@@ -2,8 +2,11 @@ import { useState } from 'react';
 import dbConnect from '../lib/dbConnect';
 import { useRouter } from 'next/router';
 import styles from '../css/Form.module.css';
+import { redirectToLogin } from '../utils/notAuth';
+import { getSession } from 'next-auth/client';
 
 const DodajIzvoz = () => {
+    redirectToLogin();
     const [naziv, setNaziv] = useState('');
     const [narudzba, setNarudzba] = useState('');
     const [isporuka, setIsporuka] = useState('');
@@ -65,9 +68,18 @@ const DodajIzvoz = () => {
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps(ctx) {
+    const session = await getSession(ctx);
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/auth/login',
+                permanent: false,
+            },
+        };
+    }
     await dbConnect();
-    return { props: {} };
+    return { props: { session } };
 }
 
 export default DodajIzvoz;

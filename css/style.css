@@ -32,3 +32,16 @@ a {
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.btn {
+    color: #fff;
+    background-color: rgb(179, 56, 56);
+    padding: 10px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
