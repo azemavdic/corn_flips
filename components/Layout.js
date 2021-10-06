@@ -30,18 +30,19 @@ function Layout({ children }) {
                 </Link>
               </li>
             )}
-
-            <li
-              style={{
-                marginTop: "10px",
-                color: "#fff",
-                textTransform: "capitalize",
-              }}
-            >
-              <Link href='/users'>
-                <a>Korisnici</a>
-              </Link>
-            </li>
+            {session && session.user.name === "asko" && (
+              <li
+                style={{
+                  marginTop: "10px",
+                  color: "#fff",
+                  textTransform: "capitalize",
+                }}
+              >
+                <Link href='/users'>
+                  <a>Korisnici</a>
+                </Link>
+              </li>
+            )}
 
             <li>
               <p
