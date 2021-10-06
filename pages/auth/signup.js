@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import styles from "../../css/Form.module.css";
 import dbConnect from "../../lib/dbConnect";
+import { useRouter } from "next/dist/client/router";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+  const router = useRouter();
+
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -30,9 +34,12 @@ const SignUpPage = () => {
     const data = await res.json();
 
     if (!res.ok) {
-      throw new Error(data.message || "Nešto je pošlo po krivu");
+      toast.error(data.message || "Nešto je pošlo po krivu");
+      return;
     }
 
+    toast.success("Kreiran korisnik");
+    router.replace("/users");
     return data;
   };
 
