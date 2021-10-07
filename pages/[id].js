@@ -48,6 +48,7 @@ const IzvozPage = ({ izvoz, user }) => {
         <div>
             <div className={styles.header}>
                 <h1>{izvoz.naziv}</h1>
+
                 <div>
                     <Link href={`/edit/${izvoz._id}`}>
                         <a>
@@ -74,6 +75,7 @@ const IzvozPage = ({ izvoz, user }) => {
                         ))}
                 </div>
             </div>
+            <hr style={{ marginTop: '10px' }} />
             <div className={styles.container}>
                 <p>Datum narudžbe: {narudzbaFormatted}</p>
                 <p>Datum isporuke: {isporukaFormatted}</p>

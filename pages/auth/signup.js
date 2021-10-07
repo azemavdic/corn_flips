@@ -44,26 +44,27 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
-      <h1 className={styles.center}>Registracija</h1>
-      <div className={styles.form}>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='name'>Korisničko ime</label>
-            <input type='text' id='name' ref={nameRef} />
+      <div>
+          <h1 className={styles.center}>Registracija</h1>
+          <hr style={{ marginTop: '10px' }} />
+          <div className={styles.form}>
+              <form onSubmit={handleSubmit}>
+                  <div>
+                      <label htmlFor='name'>Korisničko ime</label>
+                      <input type='text' id='name' ref={nameRef} />
+                  </div>
+                  <div>
+                      <label htmlFor='email'>Email</label>
+                      <input type='email' id='email' ref={emailRef} />
+                  </div>
+                  <div>
+                      <label htmlFor='password'>Šifra</label>
+                      <input type='password' id='password' ref={passwordRef} />
+                  </div>
+                  <input type='submit' value='Registracija' />
+              </form>
           </div>
-          <div>
-            <label htmlFor='email'>Email</label>
-            <input type='email' id='email' ref={emailRef} />
-          </div>
-          <div>
-            <label htmlFor='password'>Šifra</label>
-            <input type='password' id='password' ref={passwordRef} />
-          </div>
-          <input type='submit' value='Registracija' />
-        </form>
       </div>
-    </div>
   );
 };
 

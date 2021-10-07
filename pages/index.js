@@ -5,6 +5,7 @@ import styles from '../css/Home.module.css';
 import Izvoz from '../components/Izvoz';
 import Link from 'next/link';
 import { getSession } from 'next-auth/client';
+import Layout from '../components/Layout';
 
 const Index = ({ izvozi, user }) => {
     const proizvodnja = user.isProizvodnja;
@@ -19,6 +20,7 @@ const Index = ({ izvozi, user }) => {
                     </Link>
                 )}
             </div>
+            <hr style={{ marginTop: '10px' }} />
             <div>
                 <table className={styles.table}>
                     <thead>
