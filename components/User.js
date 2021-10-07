@@ -17,7 +17,11 @@ const User = ({ user, index, deleteHandler, curUser }) => {
                     <a className={styles.naziv}>{user.name}</a>
                 </Link>
             </td>
-            <td>{user.email}</td>
+            <td>
+                <a className={styles.email} href={`mailto:${user.email}`}>
+                    {user.email}
+                </a>
+            </td>
             <td style={{ textAlign: 'center' }}>
                 {user.isProizvodnja ? (
                     <div className={styles.dousera}>

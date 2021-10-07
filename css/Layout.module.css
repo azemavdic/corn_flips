@@ -45,3 +45,14 @@
 .dashboard {
     display: flex;
 }
+
+.korisnici {
+    margin-top: 10px;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.korisnici:hover {
+    color: #333;
+    /* border-bottom: #333 1px solid; */
+}

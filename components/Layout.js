@@ -31,15 +31,11 @@ function Layout({ children }) {
                             </li>
                         )}
                         {session && !loading && (
-                            <li
-                                style={{
-                                    marginTop: '10px',
-                                    color: '#fff',
-                                    textTransform: 'capitalize',
-                                }}
-                            >
+                            <li className={styles.korisnici}>
                                 <Link href='/users'>
-                                    <a>Korisnici</a>
+                                    <a className={styles.korisnici}>
+                                        Korisnici
+                                    </a>
                                 </Link>
                             </li>
                         )}
