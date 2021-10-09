@@ -30,3 +30,22 @@
   margin-top: 10px;
   border-bottom: 1px solid #777;
 }
+
+.box form input[type="submit"] {
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  background-color: rgb(179, 56, 56);
+  color: #fff;
+  font: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  display: block;
+  height: 5vh;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}

@@ -44,7 +44,7 @@ const EditUserPage = ({ user }) => {
       <h1>{user.name}</h1>
       <hr style={{ marginTop: "10px" }} />
       <div className={styles.body}>
-        <p>Ovlaštenja</p>
+        <h4 style={{ marginBottom: "20px" }}>Ovlaštenja</h4>
         <div className={styles.box}>
           <form onSubmit={handleSubmit}>
             <div className={styles.flex}>
