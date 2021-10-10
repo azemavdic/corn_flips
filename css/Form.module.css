@@ -61,3 +61,47 @@
 .radio label {
   margin-left: 25px;
 }
+
+/* Za modal styles */
+.modal {
+  margin-bottom: 10px;
+}
+
+.modal input {
+  padding-left: 5px;
+  outline: none;
+  /* border: none;
+  border-bottom: 1px solid #333; */
+}
+
+.btnbox {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.red {
+  margin-right: 10px;
+  background-color: rgb(192, 48, 48);
+}
+
+.green {
+  background-color: rgb(59, 170, 59);
+}
+
+.red,
+.green {
+  color: #fff;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.red:hover,
+.green:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}

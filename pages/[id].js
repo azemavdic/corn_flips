@@ -111,6 +111,26 @@ const IzvozPage = ({ izvoz, user }) => {
             {izvoz.edit && izvoz.edit.name}
           </span>
         </p>
+        <h4>Narudzba</h4>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>RB</th>
+              <th>Artikal</th>
+              <th>Kartona</th>
+            </tr>
+          </thead>
+          <tbody>
+            {izvoz.proizvodi &&
+              izvoz.proizvodi.map((proizvod, i) => (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{proizvod.naziv}</td>
+                  <td>{proizvod.kolicina}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

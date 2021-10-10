@@ -6,6 +6,8 @@ import { redirectToLogin } from "../utils/notAuth";
 import { getSession } from "next-auth/client";
 import { toast } from "react-toastify";
 import UserModel from "../models/User";
+import Modal from "../components/Modal";
+import Narudzba from "../components/Narudzba";
 
 const DodajIzvoz = ({ user }) => {
   redirectToLogin();
@@ -13,11 +15,25 @@ const DodajIzvoz = ({ user }) => {
   const [narudzba, setNarudzba] = useState("");
   const [isporuka, setIsporuka] = useState("");
 
+  const [showModal, setShowModal] = useState(false);
+
+  //Test
+  const [inputList, setInputList] = useState([{ naziv: "", kolicina: "" }]);
+
   const router = useRouter();
+
+  const proizvodi = inputList;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const izvoz = { naziv, narudzba, isporuka, user: user._id };
+    const izvoz = {
+      naziv,
+      narudzba,
+      isporuka,
+      user: user._id,
+      proizvodi: inputList,
+    };
+
     const res = await fetch("/api/izvozi", {
       method: "POST",
       headers: {
@@ -28,7 +44,7 @@ const DodajIzvoz = ({ user }) => {
     });
     const data = await res.json();
 
-    if (!res.ok) {
+    if (data.success === false) {
       toast.error(data.message);
       return;
     }
@@ -37,9 +53,30 @@ const DodajIzvoz = ({ user }) => {
     router.push("/");
   };
 
+  //Test
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+  const handleAddClick = () => {
+    setInputList([...inputList, { naziv: "", kolicina: "" }]);
+  };
+
   return (
     <>
-      <h1>Dodaj izvoz</h1>
+      <div className='space-betw'>
+        <h1>Dodaj izvoz</h1>
+        <button className='btn btn-sec' onClick={() => setShowModal(true)}>
+          Dodaj proizvode
+        </button>
+      </div>
       <hr style={{ marginTop: "10px" }} />
       <div className={styles.form}>
         <form onSubmit={handleSubmit}>
@@ -71,6 +108,23 @@ const DodajIzvoz = ({ user }) => {
             />
           </div>
           <input type='submit' value='Potvrdi' />
+          <Modal show={showModal} onClose={() => setShowModal(false)}>
+            <h2>Dodaj proizvode</h2>
+            {inputList.map((el, i) => (
+              <Narudzba
+                key={i}
+                el={el}
+                onInputChange={handleInputChange}
+                onRemove={handleRemoveClick}
+                onAdd={handleAddClick}
+                inputList={inputList}
+                i={i}
+              />
+            ))}
+            <button className='btn' onClick={() => setShowModal(false)}>
+              Potvrdi
+            </button>
+          </Modal>
         </form>
       </div>
     </>

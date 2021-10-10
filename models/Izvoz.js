@@ -1,6 +1,22 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+const ProizvodSchema = Schema(
+  {
+    naziv: {
+      type: String,
+      default: "",
+    },
+    kolicina: {
+      type: String,
+      default: "",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const IzvozSchema = Schema(
   {
     naziv: { type: String, required: [true, "Upišite naziv kupca"] },
@@ -18,6 +34,7 @@ const IzvozSchema = Schema(
     zavrsen: { type: Boolean },
     user: { type: Schema.Types.ObjectId, ref: "User" },
     edit: { type: Schema.Types.ObjectId, ref: "User" },
+    proizvodi: [ProizvodSchema],
   },
   {
     timestamps: true,
