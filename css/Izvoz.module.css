@@ -1,43 +1,48 @@
 .container {
-  margin-top: 30px;
-  font-size: 22px;
-  padding: 10px;
+    margin-top: 30px;
+    font-size: 22px;
+    padding: 10px;
 }
 
 .container p {
-  padding: 6px;
+    padding: 6px;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .table {
-  /* margin-top: 40px; */
-  border-collapse: collapse;
-  width: 90%;
-  margin: 0 auto 40px;
+    /* margin-top: 40px; */
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto 40px;
 }
 
 .table th,
 .table td {
-  border: 1px solid rgb(141, 141, 141);
-  padding: 20px 20px;
-  text-align: center;
+    border: 1px solid rgb(141, 141, 141);
+    padding: 20px 20px;
+    text-align: center;
 }
 
 .table th {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 .table th:hover {
-  background-color: rgb(102, 100, 100);
+    background-color: rgb(102, 100, 100);
 }
 
 .container h4 {
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 5px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.table tbody tr td {
+    font-size: 16px;
+    font-weight: 600;
 }
