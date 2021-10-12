@@ -19,7 +19,7 @@ const DodajIzvoz = ({ user }) => {
 
   //Test
   const [inputList, setInputList] = useState([{ naziv: "", kolicina: "" }]);
-
+  const [select, setSelect] = useState("");
   const router = useRouter();
 
   const proizvodi = inputList;
@@ -58,6 +58,7 @@ const DodajIzvoz = ({ user }) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
+    list[index]["naziv"] = select.label;
     setInputList(list);
   };
   const handleRemoveClick = (index) => {
@@ -119,6 +120,8 @@ const DodajIzvoz = ({ user }) => {
                 onAdd={handleAddClick}
                 inputList={inputList}
                 i={i}
+                setSelect={setSelect}
+                // select={select}
               />
             ))}
             <button className='btn' onClick={() => setShowModal(false)}>

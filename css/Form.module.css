@@ -65,6 +65,11 @@
 /* Za modal styles */
 .modal {
   margin-bottom: 10px;
+  display: flex;
+}
+
+.select {
+  width: 300px;
 }
 
 .modal input {
