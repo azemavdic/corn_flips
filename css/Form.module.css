@@ -1,112 +1,113 @@
 .form form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin-top: 40px;
 }
 
 .form form div {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
-.form form div input[type="text"],
-.form form div input[type="date"],
-.form form input[type="submit"],
-.form form input[type="email"],
-.form form input[type="password"] {
-  display: block;
-  width: 50vw;
-  display: block;
-  height: 5vh;
-  border-radius: 10px;
-  border: none;
-  outline: none;
+.form form div input[type='text'],
+.form form div input[type='date'],
+.form form input[type='submit'],
+.form form input[type='email'],
+.form form input[type='password'] {
+    display: block;
+    width: 50vw;
+    display: block;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    outline: none;
 }
 
-.form form div input[type="text"],
-.form form div input[type="password"],
-.form form div input[type="email"],
-.form form div input[type="date"] {
-  padding: 10px;
-  margin-top: 5px;
-  font-size: 20px;
+.form form div input[type='text'],
+.form form div input[type='password'],
+.form form div input[type='email'],
+.form form div input[type='date'] {
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 20px;
 }
 
-.form form div input[type="checkbox"] {
-  margin-left: 10px;
+.form form div input[type='checkbox'] {
+    margin-left: 10px;
 }
 
-.form form input[type="submit"] {
-  margin-top: 20px;
-  padding-top: 10px;
-  padding-bottom: 30px;
-  background-color: rgb(179, 56, 56);
-  color: #fff;
-  font: 26px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
+.form form input[type='submit'] {
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background-color: rgb(179, 56, 56);
+    color: #fff;
+    font: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
-.form form input[type="submit"]:hover {
-  background-color: rgba(179, 56, 56, 0.657);
+.form form input[type='submit']:hover {
+    background-color: rgba(179, 56, 56, 0.657);
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 .radio label {
-  margin-left: 25px;
+    margin-left: 25px;
 }
 
 /* Za modal styles */
 .modal {
-  margin-bottom: 10px;
-  display: flex;
+    margin-bottom: 10px;
+    display: flex;
+    /* align-items: center; */
 }
 
 .select {
-  width: 300px;
+    width: 300px;
 }
 
 .modal input {
-  padding-left: 5px;
-  outline: none;
-  /* border: none;
+    padding-left: 5px;
+    outline: none;
+    /* border: none;
   border-bottom: 1px solid #333; */
 }
 
 .btnbox {
-  margin-left: 10px;
-  display: inline-block;
+    margin-left: 10px;
+    display: inline-block;
 }
 
 .ml10 {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .red {
-  margin-right: 10px;
-  background-color: rgb(192, 48, 48);
+    margin-right: 10px;
+    background-color: rgb(192, 48, 48);
 }
 
 .green {
-  background-color: rgb(59, 170, 59);
+    background-color: rgb(59, 170, 59);
 }
 
 .red,
 .green {
-  color: #fff;
-  padding: 5px 8px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    color: #fff;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .red:hover,
 .green:hover {
-  background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
