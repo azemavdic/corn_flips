@@ -3,6 +3,7 @@ import { getSession, signIn } from 'next-auth/client';
 import styles from '../../css/Form.module.css';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 const LoginPage = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +26,7 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         setDisable(true);
         const enteredName = nameRef.current.value;
         const enteredPassword = passwordRef.current.value;
@@ -38,17 +40,20 @@ const LoginPage = () => {
         if (!result.error) {
             toast.success('Uspješna prijava');
             router.push('/');
+            // setIsLoading(false);
+            // setDisable(false);
         } else {
             console.log(result);
             toast.error(result.error);
+            setIsLoading(false);
             setDisable(false);
             return;
         }
     };
 
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
+    // if (isLoading) {
+    //     return <p>Loading...</p>;
+    // }
 
     return (
         <div>
@@ -68,7 +73,15 @@ const LoginPage = () => {
                             ref={passwordRef}
                         />
                     </div>
-                    <input type='submit' value='Prijava' disabled={disable} />
+                    {isLoading ? (
+                        <Image src='/spinner.gif' width={100} height={70} />
+                    ) : (
+                        <input
+                            type='submit'
+                            value='Prijava'
+                            disabled={disable}
+                        />
+                    )}
                 </form>
             </div>
         </div>
