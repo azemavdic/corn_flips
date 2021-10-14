@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import UserModel from '../models/User';
 import Modal from '../components/Modal';
 import Narudzba from '../components/Narudzba';
+import Image from 'next/image';
 
 const DodajIzvoz = ({ user }) => {
     redirectToLogin();
@@ -16,6 +17,7 @@ const DodajIzvoz = ({ user }) => {
     const [isporuka, setIsporuka] = useState('');
 
     const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     //Test
     const [inputList, setInputList] = useState([{ naziv: '', kolicina: '' }]);
@@ -24,6 +26,7 @@ const DodajIzvoz = ({ user }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const izvoz = {
             naziv,
             narudzba,
@@ -42,8 +45,15 @@ const DodajIzvoz = ({ user }) => {
         });
         const data = await res.json();
 
+        if (!naziv || !narudzba || !isporuka) {
+            toast.error('Molimo popunite sva polja');
+            setIsLoading(false);
+            return;
+        }
+
         if (data.success === false) {
             toast.error(data.message);
+            setIsLoading(false);
             return;
         }
 
@@ -109,7 +119,12 @@ const DodajIzvoz = ({ user }) => {
                             onChange={(e) => setIsporuka(e.target.value)}
                         />
                     </div>
-                    <input type='submit' value='Potvrdi' />
+                    {isLoading ? (
+                        <Image src='/spinner.gif' width={100} height={70} />
+                    ) : (
+                        <input type='submit' value='Potvrdi' />
+                    )}
+
                     <Modal show={showModal} onClose={() => setShowModal(false)}>
                         <h2>Dodaj proizvode</h2>
                         {inputList.map((el, i) => (
