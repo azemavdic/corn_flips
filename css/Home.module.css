@@ -77,3 +77,14 @@
 .email:hover {
     color: #333;
 }
+
+@media only screen and (max-width: 810px) {
+    .table th,
+    .table td {
+        font-size: 22px;
+    }
+
+    .header a {
+        font-size: 18px;
+    }
+}

@@ -17,7 +17,7 @@ function Layout({ children }) {
                 <header>
                     <div className={styles.logo}>
                         <Link href='/'>
-                            <a href='#'>Corn Flips</a>
+                            <a href='#'></a>
                         </Link>
                     </div>
                 </header>
