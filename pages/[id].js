@@ -50,9 +50,11 @@ const IzvozPage = ({ izvoz, user }) => {
 
     const narudzbaFormatted = dayjs(izvoz.narudzba).format('DD.MM.YYYY');
     const isporukaFormatted = dayjs(izvoz.isporuka).format('DD.MM.YYYY');
-    const kreiranFormatted = dayjs(izvoz.createdAt).format('DD.MM.YYYY - HH:m');
+    const kreiranFormatted = dayjs(izvoz.createdAt).format(
+        'DD.MM.YYYY - HH:mm'
+    );
     const ispravljenFormatted = dayjs(izvoz.updatedAt).format(
-        'DD.MM.YYYY - HH:m'
+        'DD.MM.YYYY - HH:mm'
     );
 
     const komercijala = user.isKomercijala;
