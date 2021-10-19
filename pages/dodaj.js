@@ -9,10 +9,20 @@ import UserModel from '../models/User';
 import Modal from '../components/Modal';
 import Narudzba from '../components/Narudzba';
 import Image from 'next/image';
+import { kupci } from '../data/kupci';
+import Select from 'react-select';
+
+const customStyle = {
+    singleValue: (provided, state) => ({
+        ...provided,
+        fontSize: '18px',
+        fontWeight: '600',
+    }),
+};
 
 const DodajIzvoz = ({ user }) => {
     redirectToLogin();
-    const [naziv, setNaziv] = useState('');
+    const [naziv, setNaziv] = useState({});
     const [narudzba, setNarudzba] = useState('');
     const [isporuka, setIsporuka] = useState('');
 
@@ -24,11 +34,16 @@ const DodajIzvoz = ({ user }) => {
     const [select, setSelect] = useState('');
     const router = useRouter();
 
+    const selectChange = (e) => {
+        const id = e.nativeEvent.target.selectedIndex;
+        setNaziv(e.nativeEvent.target[id].text);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         const izvoz = {
-            naziv,
+            naziv: naziv.label,
             narudzba,
             isporuka,
             user: user._id,
@@ -94,14 +109,22 @@ const DodajIzvoz = ({ user }) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='naziv'>Naziv</label>
-                        <input
+                        {/* <input
                             type='text'
                             id='naziv'
                             value={naziv}
                             onChange={(e) => setNaziv(e.target.value)}
+                        /> */}
+                        <Select
+                            placeholder='Odaberi kupca'
+                            onChange={setNaziv}
+                            options={kupci}
+                            name='naziv'
+                            className={styles.selectt}
+                            styles={customStyle}
                         />
                     </div>
-                    <div>
+                    <div className='mt-20'>
                         <label htmlFor='narudzba'>Datum narudžbe</label>
                         <input
                             type='date'
@@ -110,7 +133,7 @@ const DodajIzvoz = ({ user }) => {
                             onChange={(e) => setNarudzba(e.target.value)}
                         />
                     </div>
-                    <div>
+                    <div className='mt-20'>
                         <label htmlFor='isporuka'>Datum isporuke</label>
                         <input
                             type='date'

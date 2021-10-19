@@ -64,7 +64,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                 <form onSubmit={handleSubmit}>
                     {!komercijala && !proizvodnjaa && (
                         <>
-                            <div>
+                            <div className='mt-20'>
                                 <label htmlFor='naziv'>Naziv</label>
                                 <input
                                     type='text'
@@ -73,7 +73,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                                     onChange={(e) => setNaziv(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className='mt-20'>
                                 <label htmlFor='narudzba'>Datum narudžbe</label>
                                 <input
                                     type='date'
@@ -85,7 +85,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                                 />
                             </div>
 
-                            <div>
+                            <div className='mt-20'>
                                 <label htmlFor='isporuka'>Datum isporuke</label>
                                 <input
                                     type='date'
@@ -101,7 +101,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                     <div className={styles.center}>
                         {!proizvodnja ||
                             (komercijala && (
-                                <div className={styles.check}>
+                                <div className='mt-20'>
                                     <label htmlFor='zavrsen'>
                                         Izvoz status
                                     </label>
@@ -115,7 +115,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             ))}
 
                         {user.isAdmin && (
-                            <div className={styles.check}>
+                            <div className='mt-20'>
                                 <label htmlFor='zavrsen'>Izvoz status</label>
                                 <input
                                     type='checkbox'
@@ -126,7 +126,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             </div>
                         )}
 
-                        <div>
+                        <div className='mt-20'>
                             {!komercijala && (
                                 <>
                                     <p>Proizvodnja status:</p>
