@@ -5,11 +5,13 @@ import styles from '../css/Home.module.css';
 import Izvoz from '../components/Izvoz';
 import Link from 'next/link';
 import { getSession } from 'next-auth/client';
-import Layout from '../components/Layout';
 
 const Index = ({ izvozi, user }) => {
     const proizvodnja = user.isProizvodnja;
     let index = 1;
+    if (!user.isProizvodnja && !user.isKomercijala && !user.isAdmin) {
+        return <p>Nemate pristup platformi</p>;
+    }
     return (
         <>
             <div className={styles.header}>
