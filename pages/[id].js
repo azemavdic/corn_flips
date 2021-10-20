@@ -58,7 +58,7 @@ const IzvozPage = ({ izvoz, user }) => {
     );
 
     const komercijala = user.isKomercijala;
-    const proizvodnja = user.isProizvodnja;
+    const admin = user.isAdmin;
 
     return (
         <div>
@@ -79,16 +79,15 @@ const IzvozPage = ({ izvoz, user }) => {
                             />
                         </a>
                     </Link>
-                    {komercijala ||
-                        (!proizvodnja && (
-                            <FontAwesomeIcon
-                                icon={faTrash}
-                                size='lg'
-                                color='red'
-                                style={{ cursor: 'pointer' }}
-                                onClick={handleDelete}
-                            />
-                        ))}
+                    {admin || komercijala ? (
+                        <FontAwesomeIcon
+                            icon={faTrash}
+                            size='lg'
+                            color='red'
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleDelete}
+                        />
+                    ) : null}
                 </div>
             </div>
             <hr style={{ marginTop: '10px' }} />
