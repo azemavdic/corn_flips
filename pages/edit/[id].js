@@ -7,6 +7,7 @@ import UserModel from '../../models/User';
 import { getSession } from 'next-auth/client';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
+import ToggleSwitch from '../../components/ToggleSwitch';
 
 const IzvozPageEdit = ({ izvoz, user }) => {
     const [naziv, setNaziv] = useState(izvoz.naziv);
@@ -52,6 +53,8 @@ const IzvozPageEdit = ({ izvoz, user }) => {
     const handleChange = (e) => {
         setProizvodnja(e.target.value);
     };
+
+    const onToggleChange = () => setZavrsen(!zavrsen);
 
     const komercijala = user.isKomercijala;
     const proizvodnjaa = user.isProizvodnja;
@@ -102,26 +105,20 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                         {!proizvodnja ||
                             (komercijala && (
                                 <div className='mt-20'>
-                                    <label htmlFor='zavrsen'>
-                                        Izvoz status
-                                    </label>
-                                    <input
-                                        type='checkbox'
-                                        id='zavrsen'
-                                        checked={zavrsen}
-                                        onChange={() => setZavrsen(!zavrsen)}
+                                    <ToggleSwitch
+                                        label='Izvoz-status'
+                                        zavrsen={zavrsen}
+                                        changeToggle={onToggleChange}
                                     />
                                 </div>
                             ))}
 
                         {user.isAdmin && (
                             <div className='mt-20'>
-                                <label htmlFor='zavrsen'>Izvoz status</label>
-                                <input
-                                    type='checkbox'
-                                    id='zavrsen'
-                                    checked={zavrsen}
-                                    onChange={() => setZavrsen(!zavrsen)}
+                                <ToggleSwitch
+                                    label='Izvoz-status'
+                                    zavrsen={zavrsen}
+                                    changeToggle={onToggleChange}
                                 />
                             </div>
                         )}
