@@ -59,3 +59,12 @@ a {
 .mt-20 {
     margin-top: 20px;
 }
+
+.center {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+}

@@ -4,10 +4,16 @@ import { signOut } from 'next-auth/client';
 import styles from '../css/Layout.module.css';
 import Sidebar from './Sidebar';
 import { useSession } from 'next-auth/client';
+import useSWR from 'swr';
 
 function Layout({ children }) {
     const [session, loading] = useSession();
+    const fetcher = (url) => fetch(url).then((r) => r.json());
 
+    const { data, error } = useSWR('/api/izvozi', fetcher);
+    if (error) return <div className='center'>failed</div>;
+    if (!data) return <div className='center'>Loading...</div>;
+    console.log(data);
     return (
         <>
             <Head>
@@ -21,6 +27,21 @@ function Layout({ children }) {
                         </Link>
                     </div>
                 </header>
+                {session && !loading && (
+                    <div className={styles.brojIzvoza}>
+                        <p>
+                            Ukupno izvoza:{' '}
+                            <span className={styles.count}>
+                                {data.data.length}
+                            </span>
+                        </p>
+                        {/* <p>
+                        Završeno izvoza:
+                        <span className={styles.count}>5</span>
+                    </p> */}
+                    </div>
+                )}
+
                 <nav className={styles.nav}>
                     <ul>
                         {!session && !loading && (
