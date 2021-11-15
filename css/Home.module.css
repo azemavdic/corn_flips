@@ -14,6 +14,12 @@
     background-color: rgba(0, 139, 12, 0.685);
 }
 
+.header a:active {
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+}
+
 .table {
     margin-top: 40px;
     border-collapse: collapse;
@@ -50,10 +56,17 @@
     padding: 5px 10px;
     background-color: rgb(95, 94, 94);
     border-radius: 10px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .button:hover {
     background-color: rgba(95, 94, 94, 0.644);
+}
+
+.button:active {
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
 }
 
 .doizvoza {
