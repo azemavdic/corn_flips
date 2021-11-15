@@ -50,6 +50,16 @@ a {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+.btn-sec:hover {
+    background-color: rgba(0, 139, 12, 0.685);
+}
+
+.btn:active {
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: 0 0 10px #000000;
+}
+
 .space-betw {
     display: flex;
     align-items: center;

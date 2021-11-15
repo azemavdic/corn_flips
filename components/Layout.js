@@ -13,7 +13,6 @@ function Layout({ children }) {
     const { data, error } = useSWR('/api/izvozi', fetcher);
     if (error) return <div className='center'>failed</div>;
     if (!data) return <div className='center'>Loading...</div>;
-    console.log(data);
     return (
         <>
             <Head>

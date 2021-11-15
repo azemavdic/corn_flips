@@ -72,10 +72,10 @@ const IzvozPage = ({ izvoz, user }) => {
                                 icon={faEdit}
                                 style={{
                                     marginRight: '14px',
-                                    cursor: 'pointer',
                                 }}
                                 size='lg'
                                 color='green'
+                                className={styles.icon}
                             />
                         </a>
                     </Link>
@@ -84,7 +84,7 @@ const IzvozPage = ({ izvoz, user }) => {
                             icon={faTrash}
                             size='lg'
                             color='red'
-                            style={{ cursor: 'pointer' }}
+                            className={styles.icon}
                             onClick={handleDelete}
                         />
                     ) : null}
