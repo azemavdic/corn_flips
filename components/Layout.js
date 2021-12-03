@@ -13,6 +13,7 @@ function Layout({ children }) {
     const { data, error } = useSWR('/api/izvozi', fetcher);
     if (error) return <div className='center'>failed</div>;
     if (!data) return <div className='center'>Loading...</div>;
+
     const nijeZavrsen = data.data.map((izvoz) => izvoz.zavrsen);
     const funkNezavrseni = () => {
         let count = 0;
@@ -23,7 +24,6 @@ function Layout({ children }) {
         }
         return count;
     };
-    funkNezavrseni();
 
     return (
         <>
