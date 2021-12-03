@@ -13,6 +13,18 @@ function Layout({ children }) {
     const { data, error } = useSWR('/api/izvozi', fetcher);
     if (error) return <div className='center'>failed</div>;
     if (!data) return <div className='center'>Loading...</div>;
+    const nijeZavrsen = data.data.map((izvoz) => izvoz.zavrsen);
+    const funkNezavrseni = () => {
+        let count = 0;
+        for (const el of nijeZavrsen) {
+            if (el == false) {
+                count += 1;
+            }
+        }
+        return count;
+    };
+    funkNezavrseni();
+
     return (
         <>
             <Head>
@@ -27,10 +39,20 @@ function Layout({ children }) {
                     </div>
                 </header>
                 {session && !loading && (
-                    <div className={styles.brojIzvoza}>
-                        <p>Ukupno izvoza </p>
-                        <span className={styles.count}>{data.data.length}</span>
-                    </div>
+                    <>
+                        <div className={styles.brojIzvoza}>
+                            <p>Ukupno izvoza </p>
+                            <span className={styles.count}>
+                                {data.data.length}
+                            </span>
+                        </div>
+                        <div className={styles.brojIzvoza}>
+                            <p>Nezavršeno </p>
+                            <span className={styles.count}>
+                                {funkNezavrseni()}
+                            </span>
+                        </div>
+                    </>
                 )}
 
                 <nav className={styles.nav}>
