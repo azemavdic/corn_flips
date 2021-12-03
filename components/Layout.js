@@ -28,16 +28,8 @@ function Layout({ children }) {
                 </header>
                 {session && !loading && (
                     <div className={styles.brojIzvoza}>
-                        <p>
-                            Ukupno izvoza:{' '}
-                            <span className={styles.count}>
-                                {data.data.length}
-                            </span>
-                        </p>
-                        {/* <p>
-                        Završeno izvoza:
-                        <span className={styles.count}>5</span>
-                    </p> */}
+                        <p>Ukupno izvoza </p>
+                        <span className={styles.count}>{data.data.length}</span>
                     </div>
                 )}
 
