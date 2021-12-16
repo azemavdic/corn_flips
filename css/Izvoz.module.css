@@ -58,6 +58,17 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .container {
+        font-size: 35px;
+    }
+
+    .header {
+        font-size: 30px;
+    }
+
+    .table tbody tr td {
+        font-size: 30px;
+    }
     .iconContainer {
         font-size: 25px;
     }
