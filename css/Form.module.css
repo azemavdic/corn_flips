@@ -132,4 +132,27 @@
     .form form div input[type='password'] {
         width: 700px;
     }
+
+    .center {
+        width: 100%;
+    }
+
+    .toggleContainer {
+        margin-bottom: 20px;
+    }
+
+    .radioContainer {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        font-size: 20px;
+    }
+    .modal input {
+        font-size: 30px;
+    }
+
+    .green,
+    .red {
+        font-size: 20px;
+    }
 }

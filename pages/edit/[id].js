@@ -88,7 +88,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                                 />
                             </div>
 
-                            <div className='mt-20'>
+                            <div className='my-20'>
                                 <label htmlFor='isporuka'>Datum isporuke</label>
                                 <input
                                     type='date'
@@ -104,7 +104,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                     <div className={styles.center}>
                         {!proizvodnja ||
                             (komercijala && (
-                                <div className='mt-20'>
+                                <div className={styles.toggleContainer}>
                                     <ToggleSwitch
                                         label='Izvoz-status'
                                         zavrsen={zavrsen}
@@ -114,7 +114,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             ))}
 
                         {user.isAdmin && (
-                            <div className='mt-20'>
+                            <div className={styles.toggleContainer}>
                                 <ToggleSwitch
                                     label='Izvoz-status'
                                     zavrsen={zavrsen}
@@ -123,7 +123,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             </div>
                         )}
 
-                        <div className='mt-20'>
+                        <div className={styles.radioContainer}>
                             {!komercijala && (
                                 <>
                                     <p>Proizvodnja status:</p>

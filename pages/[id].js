@@ -30,6 +30,7 @@ const IzvozPage = ({ izvoz, user }) => {
             showDenyButton: true,
             confirmButtonText: 'Da',
             denyButtonText: 'Ne',
+            customClass: { htmlContainer: 'grid-row:1' },
         });
         // if (window.confirm('Jeste li sigurni da želite obrisati izvoz?')) {
         if (confirm.isConfirmed) {
@@ -65,7 +66,7 @@ const IzvozPage = ({ izvoz, user }) => {
             <div className={styles.header}>
                 <h1>{izvoz.naziv}</h1>
 
-                <div>
+                <div className={styles.iconContainer}>
                     <Link href={`/edit/${izvoz._id}`}>
                         <a>
                             <FontAwesomeIcon

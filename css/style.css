@@ -70,6 +70,15 @@ a {
     margin-top: 20px;
 }
 
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.my-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .center {
     display: flex;
     min-height: 100vh;
@@ -77,4 +86,18 @@ a {
     justify-content: center;
     color: #fff;
     font-size: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+    .swal2-container.swal2-center > .swal2-popup {
+        grid-row: 1 !important;
+    }
+    .css-b62m3t-container,
+    .css-idne8v-Input {
+        font-size: 30px !important;
+    }
+
+    .btn {
+        font-size: 20px;
+    }
 }

@@ -70,3 +70,24 @@
 .checkbox:checked + .label .switch {
     right: 0px;
 }
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        font-size: 20px;
+    }
+    .toggleswitch {
+        width: 180px;
+    }
+    .switch {
+        right: 140px;
+    }
+
+    .inner:before,
+    .inner:after {
+        font-size: 18px;
+        text-align: center;
+    }
+}

@@ -1,38 +1,55 @@
 .body {
-  padding-top: 10px;
+    padding-top: 10px;
 }
 
 .header {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 25px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
 }
 
 .modal {
-  background: white;
-  width: 550px;
-  min-height: 600px;
-  border-radius: 15px;
-  padding: 15px;
+    background: white;
+    width: 550px;
+    min-height: 600px;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .header a {
-  color: #333;
-  cursor: pointer;
+    color: #333;
+    cursor: pointer;
 }
 
 .body h2 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .overlay {
+        width: 1000px;
+        height: 1500px;
+    }
+    .modal {
+        width: 900px;
+    }
+    .header {
+        font-size: 40px;
+    }
+
+    .body h2 {
+        font-size: 40px;
+    }
 }
