@@ -67,7 +67,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                 <form onSubmit={handleSubmit}>
                     {!komercijala && !proizvodnjaa && (
                         <>
-                            <div className='mt-20'>
+                            <div className='mt-100'>
                                 <label htmlFor='naziv'>Naziv</label>
                                 <input
                                     type='text'
@@ -180,7 +180,11 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             <Image src='/spinner.gif' width={100} height={70} />
                         </div>
                     ) : (
-                        <input type='submit' value='Ispravi' />
+                        <input
+                            type='submit'
+                            value='Ispravi'
+                            className={styles.btnIspravi}
+                        />
                     )}
                 </form>
             </div>

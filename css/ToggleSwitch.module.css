@@ -76,18 +76,18 @@
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        font-size: 20px;
+        font-size: 30px;
     }
     .toggleswitch {
-        width: 180px;
+        width: 200px;
     }
     .switch {
-        right: 140px;
+        right: 170px;
     }
 
     .inner:before,
     .inner:after {
-        font-size: 18px;
+        font-size: 25px;
         text-align: center;
     }
 }

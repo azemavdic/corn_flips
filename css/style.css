@@ -69,6 +69,9 @@ a {
 .mt-20 {
     margin-top: 20px;
 }
+.mt-100 {
+    margin-top: 100px;
+}
 
 .mb-20 {
     margin-bottom: 20px;
@@ -98,6 +101,10 @@ a {
     }
 
     .btn {
-        font-size: 20px;
+        font-size: 30px;
+    }
+
+    h1 {
+        font-size: 50px;
     }
 }
