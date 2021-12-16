@@ -118,3 +118,26 @@
         font-weight: 500;
     }
 }
+
+.box {
+    margin: 20px auto;
+    padding: 20px 40px 20px 40px;
+    border: 1px solid rgb(179, 56, 56);
+    border-radius: 10px;
+    background-color: rgb(235, 232, 232);
+    /* width: 1000px; */
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 1000px;
+        margin-bottom: 100px;
+    }
+    .dashboard {
+        align-items: center;
+        width: 1000px;
+    }
+    .box {
+        width: 80%;
+    }
+}

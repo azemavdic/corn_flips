@@ -100,4 +100,7 @@
     .header a {
         font-size: 18px;
     }
+    .tableContainer {
+        overflow-x: auto;
+    }
 }

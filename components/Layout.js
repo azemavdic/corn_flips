@@ -46,12 +46,6 @@ function Layout({ children }) {
                                 {data.data.length}
                             </span>
                         </div>
-                        <div className={styles.brojIzvoza}>
-                            <p>Nezavršeno </p>
-                            <span className={styles.count}>
-                                {funkNezavrseni()}
-                            </span>
-                        </div>
                     </>
                 )}
 
@@ -95,7 +89,7 @@ function Layout({ children }) {
             </div>
             <div className={styles.dashboard}>
                 <Sidebar />
-                <div className='box'>{children}</div>
+                <div className={styles.box}>{children}</div>
             </div>
         </>
     );

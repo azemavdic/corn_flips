@@ -120,3 +120,16 @@
 .green:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+@media only screen and (max-width: 768px) {
+    .form {
+        width: 100%;
+    }
+    .form .selectt,
+    .form form div input[type='date'],
+    .form form div input[type='text'],
+    .form form div input[type='email'],
+    .form form div input[type='password'] {
+        width: 700px;
+    }
+}

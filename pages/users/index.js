@@ -40,7 +40,7 @@ const UsersPage = ({ user, users, curUser }) => {
                 )}
             </div>
             <hr style={{ marginTop: '10px' }} />
-            <div>
+            <div className={styles.tableContainer}>
                 <table className={styles.table}>
                     <thead>
                         <tr>
