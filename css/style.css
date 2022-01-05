@@ -18,6 +18,21 @@ a {
     color: #fff;
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+        to bottom,
+        rgb(27, 112, 98),
+        rgb(60, 210, 221)
+    );
+    border-radius: 20px;
+}
+
 .box {
     margin: 20px auto;
     padding: 20px 40px 20px 40px;

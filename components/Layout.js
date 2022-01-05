@@ -14,17 +14,6 @@ function Layout({ children }) {
     if (error) return <div className='center'>failed</div>;
     if (!data) return <div className='center'>Loading...</div>;
 
-    const nijeZavrsen = data.data.map((izvoz) => izvoz.zavrsen);
-    const funkNezavrseni = () => {
-        let count = 0;
-        for (const el of nijeZavrsen) {
-            if (el == false) {
-                count += 1;
-            }
-        }
-        return count;
-    };
-
     return (
         <>
             <Head>
