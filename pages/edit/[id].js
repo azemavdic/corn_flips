@@ -60,7 +60,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
     const proizvodnjaa = user.isProizvodnja;
 
     return (
-        <>
+        <div style={{ paddingBottom: '100px' }}>
             <h1>Izmijeni izvoz</h1>
             <hr style={{ marginTop: '10px' }} />
             <div className={styles.form}>
@@ -104,7 +104,10 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                     <div className={styles.center}>
                         {!proizvodnja ||
                             (komercijala && (
-                                <div className={styles.toggleContainer}>
+                                <div
+                                    className={styles.toggleContainer}
+                                    style={{ padding: '5px' }}
+                                >
                                     <ToggleSwitch
                                         label='Izvoz-status'
                                         zavrsen={zavrsen}
@@ -114,7 +117,10 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                             ))}
 
                         {user.isAdmin && (
-                            <div className={styles.toggleContainer}>
+                            <div
+                                className={styles.toggleContainer}
+                                style={{ padding: '5px' }}
+                            >
                                 <ToggleSwitch
                                     label='Izvoz-status'
                                     zavrsen={zavrsen}
@@ -126,7 +132,14 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                         <div className={styles.radioContainer}>
                             {!komercijala && (
                                 <>
-                                    <p>Proizvodnja status:</p>
+                                    <p
+                                        style={{
+                                            padding: '10px',
+                                            marginTop: '10px',
+                                        }}
+                                    >
+                                        Proizvodnja status:
+                                    </p>
                                     <div className={styles.radio}>
                                         <label htmlFor='ne'>
                                             <input
@@ -188,7 +201,7 @@ const IzvozPageEdit = ({ izvoz, user }) => {
                     )}
                 </form>
             </div>
-        </>
+        </div>
     );
 };
 
