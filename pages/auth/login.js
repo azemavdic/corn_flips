@@ -61,7 +61,7 @@ const LoginPage = () => {
             <hr style={{ marginTop: '10px' }} />
             <div className={styles.form}>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='mb-20'>
                         <label htmlFor='name'>Korisničko ime</label>
                         <input type='text' id='name' ref={nameRef} />
                     </div>
