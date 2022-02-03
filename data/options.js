@@ -6,6 +6,7 @@ const flips = [
     { value: 'flips140/14', label: 'Gold flips 140g 14/1' },
     { value: 'pikant50', label: 'Gold piquant 50g' },
     { value: 'crispy75', label: 'Gold crispy 75g' },
+    { value: 'puffins85', label: 'Flips Mr. Puffins 85g' },
 ];
 
 const cips = [
@@ -56,6 +57,13 @@ const krem = [
     { value: 'krem900', label: 'Gold nutt 900g' },
 ];
 
+const praskasti = [
+    { value: 'aleva100', label: 'Aleva paprika 100g' },
+    { value: 'aleva100lj', label: 'Aleva paprika 100g - ljuta' },
+    { value: 'soda250', label: 'Soda bb 250g' },
+    { value: 'kokicar500', label: 'Kokičar 500g' },
+];
+
 export const options = [
     {
         label: 'Flips proizvodi',
@@ -80,5 +88,9 @@ export const options = [
     {
         label: 'Krem proizvodi',
         options: krem,
+    },
+    {
+        label: 'Prašk. i zrn. proizvodi',
+        options: praskasti,
     },
 ];
