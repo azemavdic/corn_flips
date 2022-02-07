@@ -16,9 +16,13 @@ import styles from '../css/Izvoz.module.css';
 import { getSession } from 'next-auth/client';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useGetIzvoziQuery, useIzbrisiIzvozMutation } from '../redux/api/api';
 
 const IzvozPage = ({ izvoz, user }) => {
     const router = useRouter();
+
+    const [izbrisiIzvoz, { isLoading: brisanje }] = useIzbrisiIzvozMutation();
+    const { refetch } = useGetIzvoziQuery();
 
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -32,20 +36,17 @@ const IzvozPage = ({ izvoz, user }) => {
             denyButtonText: 'Ne',
             customClass: { htmlContainer: 'grid-row:1' },
         });
-        // if (window.confirm('Jeste li sigurni da želite obrisati izvoz?')) {
         if (confirm.isConfirmed) {
             try {
                 Swal.fire('Izvoz izbrisan!', '', 'success');
-                await fetch(`/api/izvozi/${izvoz._id}`, {
-                    method: 'DELETE',
-                });
-                router.push('/');
+                await izbrisiIzvoz(izvoz._id);
+                refetch();
+                await router.push('/');
             } catch (error) {
                 console.error(error);
             }
         } else {
             Swal.fire('Izvoz nije izbrisan', '', 'info');
-            // alert('Neuspjelo brisanje');
         }
     };
 

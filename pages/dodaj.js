@@ -11,6 +11,7 @@ import Narudzba from '../components/Narudzba';
 import Image from 'next/image';
 import { kupci } from '../data/kupci';
 import Select from 'react-select';
+import { useDodajIzvozMutation, useGetIzvoziQuery } from '../redux/api/api';
 
 const customStyle = {
     singleValue: (provided, state) => ({
@@ -29,15 +30,12 @@ const DodajIzvoz = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    //Test
     const [inputList, setInputList] = useState([{ naziv: '', kolicina: '' }]);
     const [select, setSelect] = useState('');
     const router = useRouter();
 
-    const selectChange = (e) => {
-        const id = e.nativeEvent.target.selectedIndex;
-        setNaziv(e.nativeEvent.target[id].text);
-    };
+    const [dodajIzvoz, { isLoading: isLoadingDodaj }] = useDodajIzvozMutation();
+    const { refetch } = useGetIzvoziQuery();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,27 +48,14 @@ const DodajIzvoz = ({ user }) => {
             proizvodi: inputList,
         };
 
-        const res = await fetch('/api/izvozi', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(izvoz),
-        });
-        const data = await res.json();
-
         if (!naziv || !narudzba || !isporuka) {
             toast.error('Molimo popunite sva polja');
             setIsLoading(false);
             return;
         }
 
-        if (data.success === false) {
-            toast.error(data.message);
-            setIsLoading(false);
-            return;
-        }
+        await dodajIzvoz(izvoz);
+        refetch();
 
         toast.success('Uspješno dodan izvoz');
         router.push('/');
@@ -109,12 +94,6 @@ const DodajIzvoz = ({ user }) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='naziv'>Naziv</label>
-                        {/* <input
-                            type='text'
-                            id='naziv'
-                            value={naziv}
-                            onChange={(e) => setNaziv(e.target.value)}
-                        /> */}
                         <Select
                             placeholder='Odaberi kupca'
                             onChange={setNaziv}

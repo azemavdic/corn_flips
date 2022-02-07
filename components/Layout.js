@@ -4,15 +4,15 @@ import { signOut } from 'next-auth/client';
 import styles from '../css/Layout.module.css';
 import Sidebar from './Sidebar';
 import { useSession } from 'next-auth/client';
-import useSWR from 'swr';
+import { useGetIzvoziQuery } from '../redux/api/api';
 
 function Layout({ children }) {
     const [session, loading] = useSession();
-    const fetcher = (url) => fetch(url).then((r) => r.json());
 
-    const { data, error } = useSWR('/api/izvozi', fetcher);
+    const { data, isLoading, error } = useGetIzvoziQuery();
+
     if (error) return <div className='center'>failed</div>;
-    if (!data) return <div className='center'>Loading...</div>;
+    if (isLoading) return <div className='center'>Loading...</div>;
 
     return (
         <>
@@ -31,9 +31,7 @@ function Layout({ children }) {
                     <>
                         <div className={styles.brojIzvoza}>
                             <p>Ukupno izvoza </p>
-                            <span className={styles.count}>
-                                {data.data.length}
-                            </span>
+                            <span className={styles.count}>{data.length}</span>
                         </div>
                     </>
                 )}
