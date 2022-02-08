@@ -5,11 +5,14 @@ import styles from '../css/Layout.module.css';
 import Sidebar from './Sidebar';
 import { useSession } from 'next-auth/client';
 import { useGetIzvoziQuery } from '../redux/api/api';
+import { useRouter } from 'next/router';
 
 function Layout({ children }) {
     const [session, loading] = useSession();
 
     const { data, isLoading, error } = useGetIzvoziQuery();
+
+    const router = useRouter();
 
     if (error) return <div className='center'>failed</div>;
     if (isLoading) return <div className='center'>Loading...</div>;
@@ -62,7 +65,9 @@ function Layout({ children }) {
                                 textTransform: 'capitalize',
                             }}
                         >
-                            {session && session.user.name}
+                            <Link href='/profil'>
+                                <a>{session && session.user.name}</a>
+                            </Link>
                         </li>
                         {session && (
                             <li>
