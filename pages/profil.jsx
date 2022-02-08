@@ -4,10 +4,11 @@ import { useRef } from 'react'
 import styles from '../css/Profil.module.css'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const Profil = () => {
   const [poruka, setPoruka] = useState(null)
-  const [status, setStatus] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const staraSifraRef = useRef()
   const novaSifraRef = useRef()
 
@@ -15,11 +16,13 @@ const Profil = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
     const enteredStaraSifra = staraSifraRef.current.value
     const enteredNovaSifra = novaSifraRef.current.value
 
     if (!enteredStaraSifra || !enteredNovaSifra) {
       setPoruka('Molimo popunite sva polja')
+      setIsLoading(false)
       setTimeout(() => {
         setPoruka(null)
       }, 3000)
@@ -40,17 +43,17 @@ const Profil = () => {
 
     if (!res.ok) {
       setPoruka(data.poruka)
+      setIsLoading(false)
       return
     }
     toast.success('Uspješna promjena šifre')
+    setIsLoading(false)
     router.push('/')
   }
   return (
     <div className={styles.profil}>
       <h2>Promijeni šifru</h2>
-      {poruka && (
-        <p className={!status ? styles.greska : styles.uspjesno}>{poruka}</p>
-      )}
+      {poruka && <p className={styles.greska}>{poruka}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='sifra'>Stara šifra</label>
@@ -60,7 +63,13 @@ const Profil = () => {
           <label htmlFor='novaSifra'>Nova šifra</label>
           <input type='text' name='novaSifra' ref={novaSifraRef} />
         </div>
-        <button className='btn'>Promijeni</button>
+        {isLoading ? (
+          <Image src='/spinner.gif' width={100} height={70} />
+        ) : (
+          <button className='btn' disabled={isLoading}>
+            Promijeni
+          </button>
+        )}
       </form>
     </div>
   )
