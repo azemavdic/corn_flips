@@ -91,6 +91,14 @@
     color: #333;
 }
 
+.select select {
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
 @media only screen and (max-width: 768px) {
     .table th,
     .table td {
