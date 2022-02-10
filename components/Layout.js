@@ -5,14 +5,23 @@ import styles from '../css/Layout.module.css';
 import Sidebar from './Sidebar';
 import { useSession } from 'next-auth/client';
 import { useGetIzvoziQuery } from '../redux/api/api';
-import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 function Layout({ children }) {
     const [session, loading] = useSession();
 
     const { data, isLoading, error } = useGetIzvoziQuery();
 
-    const router = useRouter();
+    const odabranaGodina = useSelector((state) => state.godina.value);
+
+    const { izvoziIsporuka } = useGetIzvoziQuery(undefined, {
+        selectFromResult: ({ data }) => ({
+            izvoziIsporuka: data?.data.filter((izvoz) => {
+                const god = new Date(izvoz?.isporuka).getFullYear();
+                return god === Number(odabranaGodina);
+            }),
+        }),
+    });
 
     if (error) return <div className='center'>failed</div>;
     if (isLoading) return <div className='center'>Loading...</div>;
@@ -34,7 +43,9 @@ function Layout({ children }) {
                     <>
                         <div className={styles.brojIzvoza}>
                             <p>Ukupno izvoza </p>
-                            <span className={styles.count}>{data.length}</span>
+                            <span className={styles.count}>
+                                {izvoziIsporuka.length}
+                            </span>
                         </div>
                     </>
                 )}

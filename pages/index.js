@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { getSession } from 'next-auth/client';
 import { useGetIzvoziQuery } from '../redux/api/api';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { trenutnaGodina } from '../redux/godinaSlice';
+import { useEffect } from 'react';
 
 const Index = ({ user }) => {
     const [odabranaGodina, setOdabranaGodina] = useState(
@@ -27,6 +30,12 @@ const Index = ({ user }) => {
     if (!user.isProizvodnja && !user.isKomercijala && !user.isAdmin) {
         return <p>Nemate pristup platformi</p>;
     }
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(trenutnaGodina(Number(odabranaGodina)));
+    }, [odabranaGodina]);
 
     const handleChange = (e) => {
         setOdabranaGodina(e.target.value);
