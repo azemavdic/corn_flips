@@ -8,6 +8,7 @@ import { getSession } from 'next-auth/client';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
 import ToggleSwitch from '../../components/ToggleSwitch';
+import { useEditIzvozMutation } from '../../redux/api/api';
 
 const IzvozPageEdit = ({ izvoz, user }) => {
     const [naziv, setNaziv] = useState(izvoz.naziv);
@@ -20,6 +21,10 @@ const IzvozPageEdit = ({ izvoz, user }) => {
     const router = useRouter();
     const id = router.query.id;
 
+    const [editIzvoz, { isError }] = useEditIzvozMutation({
+        fixedCacheKey: 'shared-update-post',
+    });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -31,21 +36,22 @@ const IzvozPageEdit = ({ izvoz, user }) => {
             proizvodnja,
             edit: user._id,
         };
-        const res = await fetch(`/api/izvozi/${id}`, {
-            method: 'PUT',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(izvoz),
-        });
 
-        if (!res.ok) {
+        if (isError) {
             toast.error('Neuspješna promjena podataka');
             setIsLoading(false);
             return;
         }
-        const data = await res.json();
+
+        await editIzvoz({
+            id,
+            naziv,
+            narudzba,
+            isporuka,
+            zavrsen,
+            proizvodnja,
+            edit: user._id,
+        });
         toast.success('Uspješna promjena');
         router.push('/');
     };

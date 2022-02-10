@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { getSession } from 'next-auth/client';
 import { useGetIzvoziQuery } from '../redux/api/api';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 const Index = ({ user }) => {
     const [odabranaGodina, setOdabranaGodina] = useState(
@@ -16,8 +15,8 @@ const Index = ({ user }) => {
 
     const { izvoziIsporuka } = useGetIzvoziQuery(undefined, {
         selectFromResult: ({ data }) => ({
-            izvoziIsporuka: data.filter((izvoz) => {
-                const god = new Date(izvoz.isporuka).getFullYear();
+            izvoziIsporuka: data?.data.filter((izvoz) => {
+                const god = new Date(izvoz?.isporuka).getFullYear();
                 return god === Number(odabranaGodina);
             }),
         }),

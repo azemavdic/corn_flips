@@ -9,8 +9,13 @@ export const api = createApi({
     endpoints: (builder) => ({
         getIzvozi: builder.query({
             query: () => 'izvozi',
-            transformResponse: (response, meta, arg) => response.data,
-            providesTags: (result, error, id) => [{ type: 'Izvoz', id }],
+            providesTags: (result) =>
+                result
+                    ? [
+                          //   ...result.map(({ id }) => ({ type: 'Posao', id })),
+                          { type: 'Izvoz', id: 'LIST' },
+                      ]
+                    : [{ type: 'Izvoz', id: 'LIST' }],
         }),
         dodajIzvoz: builder.mutation({
             query: (izvoz) => ({
@@ -25,13 +30,23 @@ export const api = createApi({
                 url: `izvozi/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: (result, error, id) => [{ type: 'Izvoz', id }],
+            invalidatesTags: [{ type: 'Izvoz', id: 'LIST' }],
+        }),
+        editIzvoz: builder.mutation({
+            query: ({ id, ...body }) => ({
+                url: `izvozi/${id}`,
+                method: 'PUT',
+                body,
+            }),
+            invalidatesTags: [{ type: 'Izvoz', id: 'LIST' }],
         }),
     }),
+    overrideExisting: false,
 });
 
 export const {
     useGetIzvoziQuery,
     useDodajIzvozMutation,
     useIzbrisiIzvozMutation,
+    useEditIzvozMutation,
 } = api;
